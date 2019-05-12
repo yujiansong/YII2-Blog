@@ -17,7 +17,7 @@ return [
             'csrfParam' => '_csrf-backend',
         ],
         'user' => [
-            'identityClass' => 'common\models\User',
+            'identityClass' => 'backend\models\UserBackend',
             'enableAutoLogin' => true,
             'identityCookie' => ['name' => '_identity-backend', 'httpOnly' => true],
         ],
@@ -45,6 +45,25 @@ return [
             ],
         ],
         */
+        'assetManager' => [
+            'bundles' => [
+                'dmstr\web\AdminLteAsset' => [
+                    'skin' => 'skin-red',
+//                    "skin-blue",
+//                    "skin-black",
+//                    "skin-red",
+//                    "skin-yellow",
+//                    "skin-purple",
+//                    "skin-green",
+//                    "skin-blue-light",
+//                    "skin-black-light",
+//                    "skin-red-light",
+//                    "skin-yellow-light",
+//                    "skin-purple-light",
+//                    "skin-green-light"
+                ],
+            ],
+        ],
     ],
     'params' => $params,
 ];

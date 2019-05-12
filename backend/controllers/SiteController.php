@@ -70,6 +70,8 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
+        // 判断用户是访客还是认证用户
+        // isGuest为真表示访客，isGuest非真表示认证用户，认证过的用户表示已经登录了，这里跳转到主页面
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }

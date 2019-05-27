@@ -20,6 +20,8 @@ class BlogController extends Controller
     public function behaviors()
     {
         return [
+            //附加行为
+            'myBehavior' => \backend\components\MyBehavior::class,
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -38,6 +40,15 @@ class BlogController extends Controller
 //        if (!Yii::$app->user->can('/blog/index')) {
 //            throw new \yii\web\ForbiddenHttpException("没权限访问.");
 //        }
+
+        //判断是不是访客
+//        $myBehavior = $this->getBehavior('myBehavior');
+//        $isGuest = $myBehavior->isGuest();
+//        var_dump($isGuest);
+
+        $isGuest = $this->isGuest();
+        var_dump($isGuest);
+
         $searchModel = new BlogSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -128,12 +139,12 @@ class BlogController extends Controller
         throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
     }
 
-    public function beforeAction($action)
-    {
-        $currentRequestRoute = $action->getUniqueId();
-        if (!Yii::$app->user->can('/'.$currentRequestRoute)) {
-            throw new \yii\web\ForbiddenHttpException("没有权限访问.");
-        }
-        return true;
-    }
+//    public function beforeAction($action)
+//    {
+//        $currentRequestRoute = $action->getUniqueId();
+//        if (!Yii::$app->user->can('/'.$currentRequestRoute)) {
+//            throw new \yii\web\ForbiddenHttpException("没有权限访问.");
+//        }
+//        return true;
+//    }
 }

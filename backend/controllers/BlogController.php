@@ -21,7 +21,10 @@ class BlogController extends Controller
     {
         return [
             //附加行为
-            'myBehavior' => \backend\components\MyBehavior::class,
+//            'myBehavior' => \backend\components\MyBehavior::class,
+            'as access' => [
+                'class' => 'backend\components\AccessControl',
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -46,8 +49,8 @@ class BlogController extends Controller
 //        $isGuest = $myBehavior->isGuest();
 //        var_dump($isGuest);
 
-        $isGuest = $this->isGuest();
-        var_dump($isGuest);
+//        $isGuest = $this->isGuest();
+//        var_dump($isGuest);
 
         $searchModel = new BlogSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);

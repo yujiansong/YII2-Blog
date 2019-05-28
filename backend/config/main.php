@@ -1,4 +1,6 @@
 <?php
+use backend\components\MyBehavior;
+
 $params = array_merge(
     require(__DIR__ . '/../../common/config/params.php'),
     require(__DIR__ . '/../../common/config/params-local.php'),
@@ -65,5 +67,6 @@ return [
             ],
         ],
     ],
+    'as myBehavior2' => MyBehavior::class,
     'params' => $params,
 ];
